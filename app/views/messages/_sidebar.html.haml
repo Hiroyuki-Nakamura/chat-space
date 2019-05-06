@@ -2,13 +2,13 @@
   %p.sideheader__user-name nakamura
   %ul.user-menu
     %li.user-menu__edit-user
-      %a(href='#')
+      = link_to do
         %i.fa.fa-edit
     %li.user-menu__new-group
-      %a(href='#')
+      = link_to do
         %i.fa.fa-cog
 .groups
-  %a(href='#')
+  = link_to do
     .group
       %p.group__group-name test1
       %p.group__group-latest-message hello world
