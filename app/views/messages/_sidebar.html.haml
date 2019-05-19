@@ -1,17 +1,18 @@
 .side_header
-  %p.sideheader__user-name nakamura
+  %p.sideheader__user-name
+    =current_user.name
   %ul.user-menu
     %li.user-menu__edit-user
-      = link_to do
-        %i.fa.fa-edit
+      = link_to new_group_path do
+        = fa_icon 'pencil-square-o', class: 'icon'
     %li.user-menu__new-group
-      = link_to do
-        %i.fa.fa-cog
+      = link_to edit_user_path(current_user) do
+        = fa_icon 'cog', class: 'icon'
 .groups
   = link_to do
     .group
-      %p.group__group-name test1
-      %p.group__group-latest-message hello world
-    .group
-      %p.group__group-name test2
-      %p.group__group-latest-message hello world
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          %p.group__group-name
+            = group.name
+          %p.group__group-latest-message hello world
