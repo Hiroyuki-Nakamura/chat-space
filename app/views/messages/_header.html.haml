@@ -1,9 +1,10 @@
 .main-header
   .current-group
-    %h2.current-group__name test group
+    %h2.current-group__name 
+      = @group.name
     %ul.member-list 
       Member:
-      %li.member-list__member
-        Nakamura
-  = link_to do
+      - @group.users.each do |user|
+        %li.member-list__member #{user.name}
+  = link_to edit_group_path(@group) do
     .main-header__edit-btn Edit
