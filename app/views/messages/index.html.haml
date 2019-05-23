@@ -4,9 +4,8 @@
   .chat-main
     = render 'chat-main'
     .header
-      = render partial: 'header' , colllection: @messages
+      = render 'header'
     .messages
-      = render partial: 'messages', collection: @messages
+      = render @messages
     .form
       =render 'form'
-      
