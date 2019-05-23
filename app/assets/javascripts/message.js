@@ -1,41 +1,23 @@
 $(document).on('turbolinks:load', function () {
   function buildHTML(message) {
-    if ( message.image ) {
-      var html =
-       `<div class="message" data-message-id=${message.id}>
-          <div class="upper-info">
-            <p class="upper-info__text">
-              ${message.user_name}
-            </p>
-            <p class="upper-info__data">
-              ${message.date}
-            </p>
-          </div>
-          <p class="message__text">
-            ${message.content}
-          </p>
-          <img class="lower-message__image" src=${message.image}>    
-        </div>`
+    var body = message.content ? `${message.content}` : "";
+    var image = message.image ? `${ message.image }` : "";
+    var html =
+      `<div class="message" data-message-id=${message.id}>
+         <div class="upper-info">
+           <p class="upper-info__text">
+             ${message.user_name}
+           </p>
+           <p class="upper-info__data">
+             ${message.date}
+           </p>
+         </div>
+         <p class="message__text">
+           ${body}
+         </p>
+         <img class="lower-message__image" src=${image}>
+       </div>`
       return html;
-    } else {
-      var html =
-        `<div class="messsage">
-          <div class="message" data-message-id=${message.id}>
-             <div class="upper-info">
-               <p class="upper-info__text">
-                 ${message.user_name}
-               </p>
-               <p class="upper-info__data">
-                 ${message.date}
-               </p>
-             </div>
-             <p class="message__text">
-               ${message.content}
-             </p>
-          </div>
-        </div>`
-      return html;
-      };
     }
   $('#new_message').on('submit', function (e) {
     e.preventDefault();
