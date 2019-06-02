@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function () {
     var body = message.content
     var image = message.image ? `${ message.image }` : "";
     var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="message" data-id=${message.id}>
          <div class="upper-info">
            <p class="upper-info__text">
              ${message.user_name}
@@ -41,16 +41,16 @@ $(document).on('turbolinks:load', function () {
         alert('error');
       })
       .always(function(data){
-        $('.form__submit').prop('disabled', false);　//ここで解除している
+        $('.form__submit').prop('disabled', false);
       })
-  });
-  var reloadMessages = function() {
+  })
+  var reloadMessages = function () {
     last_message_id = $('.message:last').data('id');
     function buildHTML(message) {
       var body = message.content
       var image = message.image ? `${ message.image }` : "";
       var html =
-        `<div class="message" data-message-id=${message.id}>
+        `<div class="message" data-id=${message.id}>
            <div class="upper-info">
              <p class="upper-info__text">
                ${message.user_name}
